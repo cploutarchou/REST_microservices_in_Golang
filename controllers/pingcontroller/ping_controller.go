@@ -1,4 +1,4 @@
-package ping_controller
+package pingcontroller
 
 import (
 	"github.com/gin-gonic/gin"
