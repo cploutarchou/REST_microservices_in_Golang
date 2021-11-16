@@ -1,12 +1,12 @@
 package app
 
 import (
-	"blog/controllers/ping_controller"
-	"blog/controllers/users_controller"
+	"blog/controllers/pingcontroller"
+	"blog/controllers/userscontroller"
 )
 
 func mapUrls() {
-	router.GET("/ping", ping_controller.Ping)
-	router.GET("/users/:user_id", users_controller.GetUser)
-	router.POST("/users", users_controller.CreateUser)
+	router.GET("/ping", pingcontroller.Ping)
+	router.GET("/users/:user_id", userscontroller.GetUser)
+	router.POST("/users", userscontroller.CreateUser)
 }
