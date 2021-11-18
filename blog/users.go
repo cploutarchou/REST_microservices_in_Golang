@@ -1,13 +1,25 @@
 package blog
 
 import (
-	user "blog/domain/users"
+	"blog/domain/users"
 	"blog/utils/errors"
-	"net/http"
 )
 
-func CreateUser(user user.User) (*user.User, *errors.APIError) {
-	return &user, &errors.APIError{
-		Status: http.StatusOK,
+func GetUser(userID int64) (*users.User, *errors.APIError) {
+	result := &users.User{ID: userID}
+	if err := result.Get(); err != nil {
+		return nil, err
 	}
+	return result, nil
+}
+func CreateUser(user users.User) (*users.User, *errors.APIError) {
+	if err := user.Validate(); err != nil {
+		return nil, err
+	}
+
+	if err := user.Save(); err != nil {
+		return nil, err
+	}
+
+	return &user, nil
 }

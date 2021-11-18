@@ -10,10 +10,17 @@ type APIError struct {
 	Error   string `json:"error"`
 }
 
-func BadRequest(message string) *APIError {
+func NewBadRequest(message string) *APIError {
 	return &APIError{
 		Message: message,
 		Status:  http.StatusBadRequest,
+		Error:   "bad_request",
+	}
+}
+func NewNotFound(message string) *APIError {
+	return &APIError{
+		Message: message,
+		Status:  http.StatusNotFound,
 		Error:   "bad_request",
 	}
 }
